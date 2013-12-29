@@ -1,0 +1,29 @@
+{
+  "name": "cljs-parser",
+  "version": "0.0.0",
+  "description": "Clojurescript parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alanshaw/cljs-parser.git"
+  },
+  "keywords": [
+    "clojurescript",
+    "cljs",
+    "lexer",
+    "tokenizer",
+    "parser"
+  ],
+  "author": "Alan Shaw",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alanshaw/cljs-parser/issues"
+  },
+  "homepage": "https://github.com/alanshaw/cljs-parser",
+  "devDependencies": {
+    "jison": "~0.4.13"
+  }
+}
