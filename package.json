@@ -4,7 +4,8 @@
   "description": "Clojurescript parser",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "jison parser.jison",
+    "test": "npm run build && node test/test"
   },
   "repository": {
     "type": "git",

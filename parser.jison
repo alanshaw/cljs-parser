@@ -3,10 +3,10 @@
 %%
 
 \s+                                               /* skip whitespace */
-:[\w=+\-*&?!$%|<>\./]*                            return 'KEYWORD'
+\:[\w=+\-*&?!$%|<>\./]*                           return 'KEYWORD'
 [A-Za-z_=+\-*&?!$%|<>\./][\w=+\-*&?!$%|<>\./]*    return 'SYMBOL'
 [-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?            return 'NUMBER'
-"([^"]|\\")*"?                                    return 'STRING'
+\"([^"]|\\\")*\"?                                 return 'STRING'
 "("                                               return '('
 ")"                                               return ')'
 <<EOF>>                                           return 'EOF'
@@ -21,47 +21,69 @@
 lists
   : list_list EOF
     {
-      console.log($1)
       return $1
     }
   ;
 
 list_list
   : list
+    {
+      $$ = $1
+    }
   | list_list list
+    {
+      $$ = yy.createNode('list_list', $1, $2)
+    }
   ;
 
 list
   : '(' ')'
+    {
+      $$ = yy.createNode('list')
+    }
   | '(' s_exp_list ')'
-  | '(' s_exp_list s_exp ')'
+    {
+      $$ = yy.createNode('list', $2)
+    }
   ;
 
 s_exp_list
   : s_exp
+    {
+      $$ = $1
+    }
   | s_exp_list s_exp
+    {
+      $$ = yy.createNode('s_exp_list', $1, $2)
+    }
   ;
 
 s_exp
   : atom
+    {
+      $$ = $1
+    }
   | list
+    {
+      $$ = $1
+    }
   ;
 
 atom
   : KEYWORD
     {
-      $$ = yytext
+      $$ = yy.createLeaf('keyword', yytext)
     }
   | SYMBOL
     {
-      $$ = yytext
+      $$ = yy.createLeaf('symbol', yytext)
     }
   | NUMBER
     {
-      $$ = Number(yytext)
+      $$ = yy.createLeaf('number', Number(yytext))
     }
   | STRING
     {
-      $$ = yytext
+      $$ = yy.createLeaf('string', yytext)
     }
   ;
