@@ -9,6 +9,8 @@
 \"([^"]|\\\")*\"?                                 return 'STRING'
 "("                                               return '('
 ")"                                               return ')'
+"["                                               return '['
+"]"                                               return ']'
 <<EOF>>                                           return 'EOF'
 .                                                 return 'INVALID'
 
@@ -47,6 +49,17 @@ list
     }
   ;
 
+param_list
+  : '[' ']'
+    {
+      $$ = yy.createNode('param_list')
+    }
+  | '[' s_exp_list ']'
+    {
+      $$ = yy.createNode('param_list', $2)
+    }
+  ;
+
 s_exp_list
   : s_exp
     {
@@ -67,6 +80,7 @@ s_exp
     {
       $$ = $1
     }
+  | param_list
   ;
 
 atom
