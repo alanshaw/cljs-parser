@@ -1,5 +1,7 @@
 (ns hello.core)
 
-(defn -main [] (println "Hello World"))
+; Hello World in clojurescript
+(defn -main []
+  (println "Hello World"))
 
 (set! *main-cli-fn* -main)

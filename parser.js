@@ -613,30 +613,32 @@ var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
 case 0:/* skip whitespace */
 break;
-case 1:return 15
+case 1:/* skip line comment */
 break;
-case 2:return 16
+case 2:return 15
 break;
-case 3:return 17
+case 3:return 16
 break;
-case 4:return 18
+case 4:return 17
 break;
-case 5:return 7
+case 5:return 18
 break;
-case 6:return 8
+case 6:return 7
 break;
-case 7:return 11
+case 7:return 8
 break;
-case 8:return 12
+case 8:return 11
 break;
-case 9:return 5
+case 9:return 12
 break;
-case 10:return 'INVALID'
+case 10:return 5
+break;
+case 11:return 'INVALID'
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?::[\w=+\-*&?!$%|<>\./]*)/,/^(?:[A-Za-z_=+\-*&?!$%|<>\./][\w=+\-*&?!$%|<>\./]*)/,/^(?:[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)/,/^(?:"([^"]|\\")*"?)/,/^(?:\()/,/^(?:\))/,/^(?:\[)/,/^(?:\])/,/^(?:$)/,/^(?:.)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:;[^\n]*)/,/^(?::[\w=+\-*&?!$%|<>\./]*)/,/^(?:[A-Za-z_=+\-*&?!$%|<>\./][\w=+\-*&?!$%|<>\./]*)/,/^(?:[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)/,/^(?:"([^"]|\\")*"?)/,/^(?:\()/,/^(?:\))/,/^(?:\[)/,/^(?:\])/,/^(?:$)/,/^(?:.)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11],"inclusive":true}}
 };
 return lexer;
 })();

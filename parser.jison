@@ -3,6 +3,7 @@
 %%
 
 \s+                                               /* skip whitespace */
+\;[^\n]*                                          /* skip line comment */
 \:[\w=+\-*&?!$%|<>\./]*                           return 'KEYWORD'
 [A-Za-z_=+\-*&?!$%|<>\./][\w=+\-*&?!$%|<>\./]*    return 'SYMBOL'
 [-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?            return 'NUMBER'
