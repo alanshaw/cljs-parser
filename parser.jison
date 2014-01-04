@@ -12,6 +12,8 @@
 ")"                                               return ')'
 "["                                               return '['
 "]"                                               return ']'
+"{"                                               return '{'
+"}"                                               return '}'
 <<EOF>>                                           return 'EOF'
 .                                                 return 'INVALID'
 
@@ -61,6 +63,35 @@ param_list
     }
   ;
 
+map_list
+  : '{' '}'
+    {
+      $$ = yy.createNode('map_list')
+    }
+  | '{' map_pair '}'
+    {
+      $$ = yy.createNode('map_list', $2)
+    }
+  ;
+
+map_pair_list
+  : map_pair
+    {
+      $$ = $1
+    }
+  | map_pair_list map_pair
+    {
+      $$ = yy.createNode('map_pair_list', $1, $2)
+    }
+  ;
+
+map_pair
+  : KEYWORD s_exp
+    {
+      $$ = yy.createNode('map_pair', yy.createLeaf('keyword', $1), $2)
+    }
+  ;
+
 s_exp_list
   : s_exp
     {
@@ -82,6 +113,13 @@ s_exp
       $$ = $1
     }
   | param_list
+    {
+      $$ = $1
+    }
+  | map_list
+    {
+      $$ = $1
+    }
   ;
 
 atom
