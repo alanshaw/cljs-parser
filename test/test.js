@@ -1,6 +1,14 @@
 var fs = require("fs")
   , parser = require("../")
 
-var tree = parser.parse(fs.readFileSync(__dirname + "/fixtures/hello.cljs", {encoding: "utf8"}))
+var fixturesDir = __dirname + "/fixtures"
 
-console.log(JSON.stringify(tree, null, 2))
+fs.readdir(fixturesDir, function (er, srcs) {
+  if (er) throw er
+
+  srcs.forEach(function (src) {
+    var tree = parser.parse(fs.readFileSync(fixturesDir + "/" + src, {encoding: "utf8"}))
+
+    console.log(JSON.stringify(tree, null, 2))
+  })
+})
