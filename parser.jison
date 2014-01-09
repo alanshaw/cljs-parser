@@ -14,6 +14,11 @@
 "]"                                               return ']'
 "{"                                               return '{'
 "}"                                               return '}'
+"'"                                               return "'"
+"`"                                               return '`'
+"@"                                               return '@'
+"^"                                               return '^'
+"#"                                               return '#'
 <<EOF>>                                           return 'EOF'
 .                                                 return 'INVALID'
 
@@ -68,27 +73,9 @@ map_list
     {
       $$ = yy.createNode('map_list')
     }
-  | '{' map_pair '}'
+  | '{' s_exp_list '}'
     {
       $$ = yy.createNode('map_list', $2)
-    }
-  ;
-
-map_pair_list
-  : map_pair
-    {
-      $$ = $1
-    }
-  | map_pair_list map_pair
-    {
-      $$ = yy.createNode('map_pair_list', $1, $2)
-    }
-  ;
-
-map_pair
-  : KEYWORD s_exp
-    {
-      $$ = yy.createNode('map_pair', yy.createLeaf('keyword', $1), $2)
     }
   ;
 
@@ -108,17 +95,56 @@ s_exp
     {
       $$ = $1
     }
+  | macro atom
+    {
+      $$ = yy.createNode('macro', $1, $2)
+    }
   | list
     {
       $$ = $1
+    }
+  | macro list
+    {
+      $$ = yy.createNode('macro', $1, $2)
     }
   | param_list
     {
       $$ = $1
     }
+  | macro param_list
+    {
+      $$ = yy.createNode('macro', $1, $2)
+    }
   | map_list
     {
       $$ = $1
+    }
+  | macro map_list
+    {
+      $$ = yy.createNode('macro', $1, $2)
+    }
+  ;
+
+macro
+  : "'"
+    {
+      $$ = yy.createLeaf('quote', yytext)
+    }
+  | '`'
+    {
+      $$ = yy.createLeaf('syntax_quote', yytext)
+    }
+  | '@'
+    {
+      $$ = yy.createLeaf('deref', yytext)
+    }
+  | '^'
+    {
+      $$ = yy.createLeaf('metadata', yytext)
+    }
+  | '#'
+    {
+      $$ = yy.createLeaf('dispatch', yytext)
     }
   ;
 
@@ -137,6 +163,6 @@ atom
     }
   | STRING
     {
-      $$ = yy.createLeaf('string', yytext)
+      $$ = yy.createLeaf('string', yytext.replace(/^"|"$/g, ''))
     }
   ;
