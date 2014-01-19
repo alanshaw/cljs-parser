@@ -11,7 +11,7 @@ Usage
 var parser = require("cljs-parser")
   , fs = require("fs")
 
-fs.readFile("/path/to/src.cljs", {encoding: "utf8"}, function (er, src) {
+fs.readFile("/path/to/src.cljs", {encoding: "utf8"}, function (er, input) {
   if (er) throw er
   var tree = parser.parse(input)
   // Do something with the tree
