@@ -9,6 +9,7 @@ fs.readdir(fixturesDir, function (er, srcs) {
   srcs.forEach(function (src) {
     var tree = parser.parse(fs.readFileSync(fixturesDir + "/" + src, {encoding: "utf8"}))
 
+    console.log("> " + src)
     console.log(JSON.stringify(tree, null, 2))
   })
 })
