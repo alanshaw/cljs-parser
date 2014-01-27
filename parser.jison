@@ -84,7 +84,7 @@ s_exp_list
     {
       $$ = $1
     }
-  | s_exp_list s_exp
+  | s_exp s_exp_list
     {
       $$ = yy.createNode('s_exp_list', $1, $2)
     }
