@@ -66,49 +66,49 @@ output:
       "left": {
         "type": "s_exp_list",
         "left": {
-          "type": "s_exp_list",
+          "type": "leaf",
           "left": {
-            "type": "s_exp_list",
-            "left": {
-              "type": "leaf",
-              "left": {
-                "type": "symbol",
-                "val": "defn"
-              },
-              "right": null
-            },
-            "right": {
-              "type": "leaf",
-              "left": {
-                "type": "symbol",
-                "val": "-main"
-              },
-              "right": null
-            }
+            "type": "symbol",
+            "val": "defn"
           },
-          "right": {
-            "type": "param_list"
-          }
+          "right": null
         },
         "right": {
-          "type": "list",
+          "type": "s_exp_list",
           "left": {
+            "type": "leaf",
+            "left": {
+              "type": "symbol",
+              "val": "-main"
+            },
+            "right": null
+          },
+          "right": {
             "type": "s_exp_list",
             "left": {
-              "type": "leaf",
-              "left": {
-                "type": "symbol",
-                "val": "println"
-              },
-              "right": null
+              "type": "param_list"
             },
             "right": {
-              "type": "leaf",
+              "type": "list",
               "left": {
-                "type": "string",
-                "val": "Hello World"
-              },
-              "right": null
+                "type": "s_exp_list",
+                "left": {
+                  "type": "leaf",
+                  "left": {
+                    "type": "symbol",
+                    "val": "println"
+                  },
+                  "right": null
+                },
+                "right": {
+                  "type": "leaf",
+                  "left": {
+                    "type": "string",
+                    "val": "Hello World"
+                  },
+                  "right": null
+                }
+              }
             }
           }
         }
@@ -120,12 +120,20 @@ output:
     "left": {
       "type": "s_exp_list",
       "left": {
+        "type": "leaf",
+        "left": {
+          "type": "symbol",
+          "val": "set!"
+        },
+        "right": null
+      },
+      "right": {
         "type": "s_exp_list",
         "left": {
           "type": "leaf",
           "left": {
             "type": "symbol",
-            "val": "set!"
+            "val": "*main-cli-fn*"
           },
           "right": null
         },
@@ -133,18 +141,10 @@ output:
           "type": "leaf",
           "left": {
             "type": "symbol",
-            "val": "*main-cli-fn*"
+            "val": "-main"
           },
           "right": null
         }
-      },
-      "right": {
-        "type": "leaf",
-        "left": {
-          "type": "symbol",
-          "val": "-main"
-        },
-        "right": null
       }
     }
   }
