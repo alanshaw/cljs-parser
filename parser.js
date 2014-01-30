@@ -119,7 +119,7 @@ case 9:
     
 break;
 case 10:
-      this.$ = $$[$0]
+      this.$ = yy.createNode('s_exp_list', $$[$0])
     
 break;
 case 11:

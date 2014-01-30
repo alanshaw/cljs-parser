@@ -82,7 +82,7 @@ map_list
 s_exp_list
   : s_exp
     {
-      $$ = $1
+      $$ = yy.createNode('s_exp_list', $1)
     }
   | s_exp s_exp_list
     {
