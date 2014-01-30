@@ -2,7 +2,7 @@
 %lex
 %%
 
-\s+                                               /* skip whitespace */
+[\s,]+                                            /* skip whitespace */
 \;[^\n]*                                          /* skip line comment */
 \:[\w=+\-*&?!$%|<>\./]*                           return 'KEYWORD'
 [A-Za-z_=+\-*&?!$%|<>\./][\w=+\-*&?!$%|<>\./]*    return 'SYMBOL'
