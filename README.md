@@ -52,12 +52,15 @@ output:
           "right": null
         },
         "right": {
-          "type": "leaf",
+          "type": "s_exp_list",
           "left": {
-            "type": "symbol",
-            "val": "hello.core"
-          },
-          "right": null
+            "type": "leaf",
+            "left": {
+              "type": "symbol",
+              "val": "hello.core"
+            },
+            "right": null
+          }
         }
       }
     },
@@ -89,24 +92,30 @@ output:
               "type": "param_list"
             },
             "right": {
-              "type": "list",
+              "type": "s_exp_list",
               "left": {
-                "type": "s_exp_list",
+                "type": "list",
                 "left": {
-                  "type": "leaf",
+                  "type": "s_exp_list",
                   "left": {
-                    "type": "symbol",
-                    "val": "println"
+                    "type": "leaf",
+                    "left": {
+                      "type": "symbol",
+                      "val": "println"
+                    },
+                    "right": null
                   },
-                  "right": null
-                },
-                "right": {
-                  "type": "leaf",
-                  "left": {
-                    "type": "string",
-                    "val": "Hello World"
-                  },
-                  "right": null
+                  "right": {
+                    "type": "s_exp_list",
+                    "left": {
+                      "type": "leaf",
+                      "left": {
+                        "type": "string",
+                        "val": "Hello World"
+                      },
+                      "right": null
+                    }
+                  }
                 }
               }
             }
@@ -138,12 +147,15 @@ output:
           "right": null
         },
         "right": {
-          "type": "leaf",
+          "type": "s_exp_list",
           "left": {
-            "type": "symbol",
-            "val": "-main"
-          },
-          "right": null
+            "type": "leaf",
+            "left": {
+              "type": "symbol",
+              "val": "-main"
+            },
+            "right": null
+          }
         }
       }
     }
