@@ -4,10 +4,11 @@
 
 [\s,]+                                            /* skip whitespace */
 \;[^\n]*                                          /* skip line comment */
-\:[\w=+\-*&?!$%|<>\./]*                           return 'KEYWORD'
-[A-Za-z_=+\-*&?!$%|<>\./][\w=+\-*&?!$%|<>\./]*    return 'SYMBOL'
+true|false                                        return 'BOOLEAN'
 [-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?            return 'NUMBER'
 \"([^"]|\\\")*\"?                                 return 'STRING'
+\:[\w=+\-*&?!$%|<>\./]*                           return 'KEYWORD'
+[A-Za-z_=+\-*&?!$%|<>\./][\w=+\-*&?!$%|<>\./]*    return 'SYMBOL'
 "("                                               return '('
 ")"                                               return ')'
 "["                                               return '['
@@ -164,5 +165,9 @@ atom
   | STRING
     {
       $$ = yy.createLeaf('string', yytext.replace(/^"|"$/g, ''))
+    }
+  | BOOLEAN
+    {
+      $$ = yy.createLeaf('boolean', (yytext == "true" ? true : false))
     }
   ;
