@@ -58,25 +58,25 @@ list
     }
   ;
 
-param_list
+vector
   : '[' ']'
     {
-      $$ = yy.createNode('param_list')
+      $$ = yy.createNode('vector')
     }
   | '[' s_exp_list ']'
     {
-      $$ = yy.createNode('param_list', $2)
+      $$ = yy.createNode('vector', $2)
     }
   ;
 
-map_list
+map
   : '{' '}'
     {
-      $$ = yy.createNode('map_list')
+      $$ = yy.createNode('map')
     }
   | '{' s_exp_list '}'
     {
-      $$ = yy.createNode('map_list', $2)
+      $$ = yy.createNode('map', $2)
     }
   ;
 
@@ -108,19 +108,19 @@ s_exp
     {
       $$ = yy.createNode('macro', $1, $2)
     }
-  | param_list
+  | vector
     {
       $$ = $1
     }
-  | macro param_list
+  | macro vector
     {
       $$ = yy.createNode('macro', $1, $2)
     }
-  | map_list
+  | map
     {
       $$ = $1
     }
-  | macro map_list
+  | macro map
     {
       $$ = yy.createNode('macro', $1, $2)
     }

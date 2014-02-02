@@ -74,7 +74,7 @@
 var parser = (function(){
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"lists":3,"list_list":4,"EOF":5,"list":6,"(":7,")":8,"s_exp_list":9,"param_list":10,"[":11,"]":12,"map_list":13,"{":14,"}":15,"s_exp":16,"atom":17,"macro":18,"'":19,"`":20,"@":21,"^":22,"#":23,"KEYWORD":24,"SYMBOL":25,"NUMBER":26,"STRING":27,"BOOLEAN":28,"$accept":0,"$end":1},
+symbols_: {"error":2,"lists":3,"list_list":4,"EOF":5,"list":6,"(":7,")":8,"s_exp_list":9,"vector":10,"[":11,"]":12,"map":13,"{":14,"}":15,"s_exp":16,"atom":17,"macro":18,"'":19,"`":20,"@":21,"^":22,"#":23,"KEYWORD":24,"SYMBOL":25,"NUMBER":26,"STRING":27,"BOOLEAN":28,"$accept":0,"$end":1},
 terminals_: {2:"error",5:"EOF",7:"(",8:")",11:"[",12:"]",14:"{",15:"}",19:"'",20:"`",21:"@",22:"^",23:"#",24:"KEYWORD",25:"SYMBOL",26:"NUMBER",27:"STRING",28:"BOOLEAN"},
 productions_: [0,[3,2],[4,1],[4,2],[6,2],[6,3],[10,2],[10,3],[13,2],[13,3],[9,1],[9,2],[16,1],[16,2],[16,1],[16,2],[16,1],[16,2],[16,1],[16,2],[18,1],[18,1],[18,1],[18,1],[18,1],[17,1],[17,1],[17,1],[17,1],[17,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
@@ -103,19 +103,19 @@ case 5:
     
 break;
 case 6:
-      this.$ = yy.createNode('param_list')
+      this.$ = yy.createNode('vector')
     
 break;
 case 7:
-      this.$ = yy.createNode('param_list', $$[$0-1])
+      this.$ = yy.createNode('vector', $$[$0-1])
     
 break;
 case 8:
-      this.$ = yy.createNode('map_list')
+      this.$ = yy.createNode('map')
     
 break;
 case 9:
-      this.$ = yy.createNode('map_list', $$[$0-1])
+      this.$ = yy.createNode('map', $$[$0-1])
     
 break;
 case 10:
