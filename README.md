@@ -89,7 +89,7 @@ output:
           "right": {
             "type": "s_exp_list",
             "left": {
-              "type": "param_list"
+              "type": "vector"
             },
             "right": {
               "type": "s_exp_list",
