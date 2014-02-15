@@ -26,5 +26,8 @@
   "homepage": "https://github.com/alanshaw/cljs-parser",
   "devDependencies": {
     "jison": "~0.4.13"
+  },
+  "dependencies": {
+    "through": "~2.3.4"
   }
 }
