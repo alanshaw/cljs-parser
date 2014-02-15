@@ -19,6 +19,8 @@ true|false                                        return 'BOOLEAN'
 "`"                                               return '`'
 "@"                                               return '@'
 "^"                                               return '^'
+"#'"                                              return "#'"
+"#_"                                              return '#_'
 "#"                                               return '#'
 <<EOF>>                                           return 'EOF'
 .                                                 return 'INVALID'
@@ -142,6 +144,14 @@ macro
   | '^'
     {
       $$ = yy.createLeaf('metadata', yytext)
+    }
+  | "#'"
+    {
+      $$ = yy.createLeaf('dispatch', yytext)
+    }
+  | '#_'
+    {
+      $$ = yy.createLeaf('dispatch', yytext)
     }
   | '#'
     {
