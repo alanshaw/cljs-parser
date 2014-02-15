@@ -1,6 +1,6 @@
 {
   "name": "cljs-parser",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Clojurescript parser",
   "main": "index.js",
   "scripts": {
